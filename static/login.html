@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--<form action="http://127.0.0.1:3000/login" method="get">-->
+<input type="text" name="username" id="user">
+<input type="text" name="password" id="pass">
+<input type="submit" value="提交" id="btn">
+<!--</form>-->
+</body>
+<script src="jquery.js"></script>
+<script>
+    $(function () {
+        $('#btn').click(function(){
+            $.ajax({
+                        //路径
+                        url: "http://127.0.0.1:3000/login",
+                        //类型
+                        "type": "get",
+                        //传输文件格式
+                        "dataType": "json",
+                        //延时
+                        timeout: 2000,
+                        //同步异步
+                        async: false,
+                        //数据
+                        "data": {
+                            username: $('#user').val(),
+                            password: $('#pass').val()
+                        }
+                    }
+            ).done(function (result) {
+                //done  完成
+                console.log(result);
+            })
+        })
+
+    })
+</script>
+</html>
